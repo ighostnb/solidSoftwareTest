@@ -8,6 +8,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Color _color = Colors.white;
+  Color _textColor = Colors.black;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage> {
               'Hey there',
               style: TextStyle(
                 fontSize: 50,
+                color: _textColor,
               ),
             ),
           ),
@@ -37,10 +39,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   void changeColor() {
-    setState(
-      () => _color = Color(
-        Random().nextInt(0xffffffff),
-      ),
-    );
+    setState(() {
+      _color = Color(Random().nextInt(0xffffffff));
+      _textColor = Color(Random().nextInt(0xffffffff));
+    });
   }
 }
