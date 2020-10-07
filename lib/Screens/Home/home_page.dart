@@ -7,6 +7,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Random _random = Random();
+
   Color _color = Colors.white;
   Color _textColor = Colors.black;
 
@@ -19,8 +21,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _body() {
-    return InkWell(
-      onTap: changeColor,
+    return GestureDetector(
+      onTap: change,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -38,10 +40,21 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void changeColor() {
+  void change() {
+    int _argb = 256;
     setState(() {
-      _color = Color(Random().nextInt(0xffffffff));
-      _textColor = Color(Random().nextInt(0xffffffff));
+      _color = Color.fromARGB(
+        _random.nextInt(_argb),
+        _random.nextInt(_argb),
+        _random.nextInt(_argb),
+        _random.nextInt(_argb),
+      );
     });
   }
+
+  // void changeColor() {
+  //   setState(() {
+  //     _color = Color(_random.nextInt(0xffffffff));
+  //   });
+  // }
 }
