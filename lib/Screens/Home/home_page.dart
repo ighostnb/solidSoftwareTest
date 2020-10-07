@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _body() {
     return GestureDetector(
-      onTap: change,
+      onTap: _changeColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -40,21 +40,19 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void change() {
-    int _argb = 256;
-    setState(() {
-      _color = Color.fromARGB(
-        _random.nextInt(_argb),
-        _random.nextInt(_argb),
-        _random.nextInt(_argb),
-        _random.nextInt(_argb),
-      );
-    });
+  Color _generate() {
+    int maxValue = 256;
+    int a = _random.nextInt(maxValue);
+    int r = _random.nextInt(maxValue);
+    int g = _random.nextInt(maxValue);
+    int b = _random.nextInt(maxValue);
+
+    return Color.fromARGB(a, r, g, b);
   }
 
-  // void changeColor() {
-  //   setState(() {
-  //     _color = Color(_random.nextInt(0xffffffff));
-  //   });
-  // }
+  void _changeColor() {
+    setState(() {
+      _color = _generate();
+    });
+  }
 }
